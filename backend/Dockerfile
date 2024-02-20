@@ -27,7 +27,9 @@ CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload
 
 ###############################
 FROM python-base as production
-ENV FASTAPI_ENV=production
+ENV VIRTUAL_ENV=/app/.venv \
+    PATH="/app/.venv/bin:$PATH" \
+    FASTAPI_ENV=production
 COPY --from=python-base ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 COPY api ./api
 WORKDIR /app
