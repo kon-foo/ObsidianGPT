@@ -2,13 +2,14 @@ import os
 from fastapi import APIRouter, HTTPException
 from api.config.settings import settings
 from api.routers import deps
+from api import schemas
 
 router = APIRouter()
 
 @router.put("/")
 async def create_note(
     note: deps.ValidNoteInput,
-) -> dict[str, str]:
+) -> schemas.MessageSchema:
     """
         Create a new markdown note in the vault directory.
     """
@@ -23,7 +24,7 @@ async def create_note(
 @router.patch("/")
 async def append_to_note(
     note: deps.ValidNoteInput,
-) -> dict[str, str]:
+) -> schemas.MessageSchema:
     """
         Append content to an existing markdown note in the vault directory.
     """
