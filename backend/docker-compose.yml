@@ -7,3 +7,5 @@ services:
       target: production
     restart: unless-stopped
     env_file: .env
+    volumes:
+      - ./vault:/app/vault

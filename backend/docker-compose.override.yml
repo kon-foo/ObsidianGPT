@@ -10,4 +10,3 @@ services:
       - "8000:8000"
     volumes:
       - ./api:/app/api
-      - ./testvault:/app/testvault
