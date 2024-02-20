@@ -20,7 +20,7 @@ def should_ignore_dir(dir_path: str) -> bool:
 
 
 @router.get("/")
-async def list_notes():
+async def list_notes() -> list[str]:
     """
         Iterates over all files in the notes directory and subdirectories and returns a list of their filenames.
     """
