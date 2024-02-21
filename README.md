@@ -38,7 +38,7 @@ You may also want to set the following variable in the .env file:
 ### Upgrading the backend
 To upgrade, simply run `./upgrade.sh` in the root of your project. This will pull the latest version of the backend and rebuild the docker image.
 
-## Creating you custom GPT
+### Creating you custom GPT
 1. Head over to [ChatGPT](https://chat.openai.com/) and create a new GPT. 
 2. Click on "Create new action".
 3. For the authentication chose type "API Key" and auth type "custom". As the Custom Header Name, use "X-API-KEY" and as the API Key, use the key you have in the .env file.
