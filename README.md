@@ -3,17 +3,17 @@
 As opposed to many existing projects that aim to integrate OpenAI's GPT-X with Obsidian, this project integrates vour Obsidian vault into ChatGPT. This has the advantage of keeping access to all your beloved ChatGPT features like Browsing, custom GPTs and voice control(if you use the mobile app).
 
 ## Who is this for?
-This is for people who like to *work* in ChatGPT. If you like to brainstorm, do research, make plans or write with ChatGPT, this setup is for you. It let's you:
-- Summarize a conversation into beautifully Obsidian flavoured markdown. 
+If you like to brainstorm, do research, make plans or write with ChatGPT, this setup is for you. It let's you:
+- Summarize a conversation into beautifully Obsidian-flavoured markdown. 
 - Create a new note in your vault.
 - Append to an existing note.
 
-In the future, I plan to add more features like:
+Potential future features could include:
 - Editing notes.
-- Usage of your templates.
+- Usage of templates.
 - Searching your vault.
 
-Besides liking to work in ChatGPT, you need a setup where you have you vault stored at some place that you can mount into a docker container. And be able proxy the traffic to the container from a public domain. In my case, I had a cheap VPS that I used for syncing my vault with Syncthing anyways. So I only had to add a reverse proxy to the setup and point a subdomain to it. But I am sure there are serverless solutions that could work as well.
+Besides liking to work in ChatGPT, you need a setup where you have your vault stored at some place that you can mount into a docker container. Furthermore you need to be able proxy to the container from a public domain. You can find out about an example setup [over here](). This setup uses a cheap VPN as an always-on copy of an Obsidian vault, but I am sure serverless solutions with could work as well.
 
 ## How to set it up
 To be able to integrate your Obsidian vault with ChatGPT, you need your vault on some kind of machine that has [Docker](https://www.docker.com) installed and that you can access with via a public domain. To be able to upgrade easily, I recommend the following set up:
