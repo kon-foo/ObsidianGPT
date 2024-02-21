@@ -1,5 +1,6 @@
 from fastapi import APIRouter, FastAPI, Request
 
+from api.config.settings import settings
 
 router = APIRouter()
 
@@ -61,41 +62,10 @@ def get_filtered_schema(app: FastAPI, router_prefixes: list[str] = None) -> dict
 @router.get("/")
 async def get_complete_schema(request: Request):
     schemes = get_filtered_schema(request.app)
-    servers =[{"url": "https://obsgpt.kon.foo"}]
+    servers =[{"url": settings.domain}]
     schemes["servers"] = servers
     del schemes["paths"]["/api/schema/"]
     # schemes["paths"]["/api/solve/{quest_id}"]["post"]["x-openai-isConsequential"] = False
     schemes["info"]["title"] = "Obsidian GPT Backend"
     return schemes
 
-
-# @router.get("/solve/{quest_id}")
-# async def get_solve_schema(request: Request, db: deps.SessionDep, quest_id: uuid.UUID):
-#     quest = crud.quests.get(db, quest_id)
-#     if quest is None:
-#         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Quest not found")
-#     scheme = get_filtered_schema(request.app, ["/api/solve"])
-#     servers =[{"url": "https://caqpoc.luona.dev"}]
-#     scheme["servers"] = servers
-#     scheme["paths"]["/api/solve/{quest_id}"]["post"]["x-openai-isConsequential"] = False
-#     scheme["info"]["title"] = quest.project.name
-#     scheme["paths"][f"/api/solve/{quest.id}"] = scheme["paths"]["/api/solve/{quest_id}"]
-#     del scheme["paths"]["/api/solve/{quest_id}"]
-#     return scheme
-
-# @router.get("/entrance/{project_id}")
-# async def get_entrance_schema(request: Request, db: deps.SessionDep, project_id: uuid.UUID):
-#     schemes = get_filtered_schema(request.app, ["/api/entrance/register", "/api/entrance/next", "/api/entrance/leaderboard"])
-#     project = crud.projects.get(db, project_id)
-#     if project is None:
-#         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Project not found")
-#     # TODO: Make this dynamic
-#     servers =[{"url": "https://caqpoc.luona.dev"}]
-#     schemes["servers"] = servers
-#     schemes["info"]["title"] = project.name
-
-#     schemes["paths"][f"/api/entrance/leaderboard/{project_id}"] = schemes["paths"]["/api/entrance/leaderboard/{project_id}"]
-#     del schemes["paths"]["/api/entrance/leaderboard/{project_id}"]
-#     schemes["paths"][f"/api/entrance/leaderboard/{project_id}"]["get"]["x-openai-isConsequential"] = False
-#     schemes["paths"]["/api/entrance/next"]["post"]["x-openai-isConsequential"] = False
-#     return schemes
