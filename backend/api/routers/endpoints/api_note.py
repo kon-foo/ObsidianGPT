@@ -29,6 +29,8 @@ async def append_to_note(
         Append content to an existing markdown note in the vault directory.
     """
     file_path = os.path.join(settings.vault_dir, note.title + ".md")
+    if not os.path.exists(file_path):
+        raise HTTPException(status_code=400, detail="Note with this title does not exist.")
     with open(file_path, "a") as file:
         file.write('\n' + note.content)
     return {"message": "Content appended to note successfully."}
