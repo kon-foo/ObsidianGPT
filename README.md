@@ -13,7 +13,7 @@ Potential future features could include:
 - Usage of templates.
 - Searching your vault.
 
-Besides liking to work in ChatGPT, you need a setup where you have your vault stored at some place that you can mount into a docker container. Furthermore you need to be able proxy to the container from a public domain. You can find out about an example setup [over here](). This setup uses a cheap VPN as an always-on copy of an Obsidian vault, but I am sure serverless solutions with could work as well.
+Besides liking to work in ChatGPT, you need a setup where you have your vault stored at some place that you can mount into a docker container. Furthermore you need to be able proxy to the container from a public domain. You can find out about an example setup [over here](https://kon.foo/My-Obsidian-Setup). This setup uses a cheap VPN as an always-on copy of an Obsidian vault, but I am sure serverless solutions with could work as well.
 
 ## How to set it up
 To be able to integrate your Obsidian vault with ChatGPT, you need your vault on some kind of machine that has [Docker](https://www.docker.com) installed and that you can access with via a public domain. To be able to upgrade easily, I recommend the following set up:
@@ -43,7 +43,7 @@ To upgrade, simply run `./upgrade.sh` in the root of your project. This will pul
 2. Click on "Create new action".
 3. For the authentication chose type "API Key" and auth type "custom". As the Custom Header Name, use "X-API-KEY" and as the API Key, use the key you have in the .env file.
 4. Head over to yourdomain.com/docs, Open the "schema" endpoint, click on "Try it out", enter your API key and click "Execute". Copy the schema and paste it into the "schema" field in the "Create new action" form.
-5. Copy the ObsidianGPT/prompt.md file into the "prompt" field. Note: The prompt works, but I haven't thoroughly tested and optimized it. Feel free to suggest improvements.
+5. Copy the [ObsidianGPT/prompt.md](ObsidianGPT/prompt.md) file into the "prompt" field. Note: The prompt works, but I haven't thoroughly tested and optimized it. Feel free to suggest improvements.
 6. Publish to "Only me".
 
 ## How to use:
